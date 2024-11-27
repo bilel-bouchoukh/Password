@@ -1,6 +1,9 @@
+import hashlib
+
 def condition():
 
     caracteres_speciaux = "!@#$%^&*"
+
 
     while True:
         mot_de_passe = input("Entrez un mot de passe : ")
@@ -22,5 +25,14 @@ def condition():
 
         print("Le mot de passe rentrer est valide")
 
+        return mot_de_passe
 
-condition()
+def hachage():
+    hachage = hashlib.sha256()
+    hachage.update(condition().encode('utf-8'))
+
+    hash_hex = hachage.hexdigest()
+
+    print("Hachage SHA-256 :",hash_hex)
+
+hachage()
